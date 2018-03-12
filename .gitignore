@@ -1,0 +1,5 @@
+*.pyc
+__pycache__
+entorno_ses
+entorno
+db.sqlite3

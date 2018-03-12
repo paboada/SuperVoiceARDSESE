@@ -12,7 +12,10 @@ from WebConcursos.forms import UserCreationCustom
 from django.core.mail import EmailMessage, send_mail
 from django.core.files.storage import FileSystemStorage
 import os
-
+import pydub
+import glob
+import shutil
+import smtplib
 # Create your views here.
 #registrar usuarios: metodo usado para crear el usuario en la aplicacion
 def form_registrar_usuario(request):

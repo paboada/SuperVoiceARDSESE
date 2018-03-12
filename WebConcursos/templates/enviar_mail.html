@@ -11,11 +11,11 @@
     <table style="width:50%">
 			   <tr>
 			    <th>Asunto</th>
-			    <td>{{form_mensaje.asunto}}</td> 
+			    <td>{{form_mensaje.asunto}}</td>
 			  </tr>
 			  <tr>
 			    <th>Mensaje</th>
-			    <td>{{form_mensaje.mensaje}}</td> 
+			    <td>{{form_mensaje.mensaje}}</td>
 			  </tr>
 		</table>
 		<input id="boton_crear" class="btn btn-primary my-2" type='submit' value='Enviar'/>
@@ -23,11 +23,11 @@
     <form class ='formularios' method='post' action="{% url 'WebConcursos:lista_concursos' %}">
         {% csrf_token %}
         <input class="btn btn-primary my-2" type='submit' value='Cancelar'/>
-    </form>   
+    </form>
 
  <script type="text/javascript">
-        document.getElementById("id_asunto").value ="Invitacion a participar en el concurso: " + "{{ concurso.nombre }}";
-        document.getElementById("id_mensaje").value = "Señor Locutor, esta cordialmente invitado a concursar.Por favor Ingrese a: " + "/url/{{concurso.url_concurso_custom}} " + " o a la siguiente direccion " + " {{concurso.url_concurso}} ";
+        document.getElementById("id_asunto").value ="Invitacion a participar en el concurso " + "{{ concurso.nombre }}";
+        document.getElementById("id_mensaje").value = "Señor Locutor esta cordialmente invitado a concursar.Por favor Ingrese a " + "/url/{{concurso.url_concurso_custom}} " + " o a la siguiente direccion " + " {{concurso.url_concurso}} ";
  </script>
  {% endfor %}
 

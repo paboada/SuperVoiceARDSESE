@@ -197,16 +197,28 @@ def EnviarCorreoListaView(request, id_concurso):
 			print('Se enviara el concurso a : ',locutores[indice].email)
 
 		if form_mensaje.is_valid():
-			#para = request.POST.get('para')
-			asunto = request.POST.get('asunto')
-			mensaje = request.POST.get('mensaje')
 			for indice in range(len(locutores)):
-				email = EmailMessage(
-							    asunto,
-							    mensaje,
-							    to=[locutores[indice].email],
-								)
-				email.send()
+				print("Enviando correo a: ", indice[0])
+				email_host=os.environ["SES_EMAIL_HOST"]
+				email_port=os.environ["SES_EMAIL_PORT"]
+				email_user=os.environ["SES_EMAIL_HOST_USER"]
+				email_pass=os.environ["SES_EMAIL_HOST_PASSWORD"]
+				smtp = smtplib.SMTP(email_host, email_port)
+				remitente = 'supervoices.cloud@gmail.com'
+				destinatario = indice[0]
+				asunto =  request.POST.get('asunto')
+				encabezado = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (remitente, destinatario, asunto)
+				email = encabezado + request.POST.get('mensaje')
+				smtp.starttls()
+				smtp.ehlo()
+				try:
+					smtp.login(email_user, email_pass)
+					print("Conectado")
+				except smtplib.SMTPAuthenticationError as e:
+					print(e.SMTPAuthenticationError)
+				print("email: ", email)
+				smtp.sendmail(remitente, destinatario, email)
+				smtp.close()
 			return redirect('WebConcursos:lista_concursos')
 	else:
 		print('id_concurso', id_concurso)

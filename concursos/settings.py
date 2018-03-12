@@ -25,7 +25,7 @@ SECRET_KEY = 'vxceyeh+z9btl#&xdwnv)7ll*%=l1$l)v69^n&ko!6&e-$!5bj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ['V_HOST_EC2_AMAZON']
 
 
 # Application definition

@@ -90,9 +90,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'concursos_db',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'concurso.cagp1b67sdkf.us-east-2.rds.amazonaws.com',
+        'USER': os.environ['V_DATABASE_USER'],
+        'PASSWORD': os.environ['V_PASS_DATABASE'],
+        'HOST': os.environ['V_ENDPOINT_AMAZON'],
         'PORT': '5432',
     }
 }
@@ -163,5 +163,3 @@ EMAIL_HOST = os.environ['SES_EMAIL_HOST']
 EMAIL_PORT = os.environ['SES_EMAIL_PORT']
 EMAIL_HOST_USER = os.environ['SES_EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['SES_EMAIL_HOST_PASSWORD']
-
-

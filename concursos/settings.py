@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['V_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ['V_HOST_EC2_AMAZON']
+ALLOWED_HOSTS = [os.environ['V_HOST_EC2_AMAZON']]
 
 
 # Application definition

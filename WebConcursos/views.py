@@ -11,6 +11,7 @@ from .models import Concurso, UsuarioCustom, ListaLocutores,AudioLocutor, Empres
 from WebConcursos.forms import UserCreationCustom
 from django.core.mail import EmailMessage, send_mail
 from django.core.files.storage import FileSystemStorage
+import os
 
 # Create your views here.
 #registrar usuarios: metodo usado para crear el usuario en la aplicacion

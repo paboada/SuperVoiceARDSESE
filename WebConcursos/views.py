@@ -198,14 +198,14 @@ def EnviarCorreoListaView(request, id_concurso):
 
 		if form_mensaje.is_valid():
 			for indice in range(len(locutores)):
-				print("Enviando correo a: ", indice[0])
+				print("Enviando correo a: ", locutores[indice].email)
 				email_host=os.environ["SES_EMAIL_HOST"]
 				email_port=os.environ["SES_EMAIL_PORT"]
 				email_user=os.environ["SES_EMAIL_HOST_USER"]
 				email_pass=os.environ["SES_EMAIL_HOST_PASSWORD"]
 				smtp = smtplib.SMTP(email_host, email_port)
 				remitente = 'supervoices.cloud@gmail.com'
-				destinatario = indice[0]
+				destinatario = locutores[indice].email
 				asunto =  request.POST.get('asunto')
 				encabezado = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (remitente, destinatario, asunto)
 				email = encabezado + request.POST.get('mensaje')

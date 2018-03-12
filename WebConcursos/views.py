@@ -212,7 +212,7 @@ def EnviarCorreoListaView(request, id_concurso):
 				destinatario = locutores[indice].email
 				asunto =  request.POST.get('asunto')
 				encabezado = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n" % (remitente, destinatario, asunto)
-				email = encabezado + "" + str(request.POST.get('mensaje') + ""
+				email = encabezado + str(request.POST.get('mensaje').replace("/", "//")
 				smtp.starttls()
 				smtp.ehlo()
 				try:

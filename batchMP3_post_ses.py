@@ -5,6 +5,10 @@ import shutil
 import smtplib
 
 import psycopg2
+import time
+
+print(time.strftime("%d/%m/%y"))
+print(time.strftime("%H:%M:%S"))
 
 #Paso 1 convertir los archivos wav a mp3
 print("-------------------------------------------------------------")
@@ -151,3 +155,6 @@ for i in range(0,len(lstFilesConvertir)): #buscar cada archivo a convertir en
                     smtp.sendmail(remitente, destinatario, email)
                     smtp.close()
                 db.close()
+                print(time.strftime("%d/%m/%y"))
+                print(time.strftime("%H:%M:%S"))
+
